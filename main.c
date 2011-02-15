@@ -1,4 +1,6 @@
-/*made by alex, compile with pthread flag (-pthread for gcc)*/
+/*made by alex, compile with pthread flag (-pthread for gcc)
+ *this is just a rough test version upon which I will expand
+ * */
 #include <signal.h>
 #include <curses.h>
 #include <stdio.h>
