@@ -10,7 +10,7 @@
 #include <math.h>
 #include <sys/types.h>
 #include <pthread.h>
-#define FORK_DEFAULT 20
+#define FORK_DEFAULT 2
 void primedump(void);
 void cleanExit(pthread_t *thread_id, int count);
 int reallocArray(int buffincrement);
@@ -18,7 +18,7 @@ int returnResults(char *file,int max,bool check);
 int readResults(char *file2);
 int extendArray(int size2, int buffincrement);
 void *checkPrime(void *threadarg);
-int *primes,prime,count,*temp,buffsize;
+unsigned int *primes,prime,count,*temp,buffsize;
 void leave(int sig);
 
 struct thread_data{
@@ -214,7 +214,7 @@ return 0;
 }
 
 int reallocArray(int buffincrement){
-int *tmp= realloc(primes,(buffsize+buffincrement)*sizeof(int *));
+unsigned int *tmp= realloc(primes,(buffsize+buffincrement)*sizeof(int *));
 if (tmp!=NULL){
 buffsize=buffsize+buffincrement;
 primes=tmp;
