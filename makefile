@@ -1,11 +1,15 @@
 CFLAGS=-pthread -Wall -ansi
-all: clean primegen
+all: clean client server
 
-primegen :
-	gcc $(CFLAGS) -o $@ main.c
-install : 
-	cp primegen /usr/bin
+client:
+	gcc $(CFLAGS) -o primegen_$@ client/main.c common/prime.c
+server:
+	gcc $(CFLAGS) -o primegen_$@ server/main.c common/prime.c
+install: 
+	cp primegen_client primegen_server /usr/bin
 clean:
-	rm -f *.o primegen
+	rm -f *.o primegen_client primegen_server
 uninstall:
-	rm /usr/bin/primegen
+	rm /usr/bin/primegen_{client,server}
+debug:
+
